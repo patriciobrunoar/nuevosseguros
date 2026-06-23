@@ -103,6 +103,7 @@ h1, h2, h3 {
   padding: 28px 22px;
   margin-bottom: 20px;
   box-shadow: var(--shadow);
+  text-align: center;
 }
 
 .block:last-of-type {
@@ -521,6 +522,18 @@ hr.divider {
   font-weight: 600;
   margin-bottom: 6px;
   color: var(--color-ink);
+}
+
+.required-mark {
+  color: #e0392b;
+}
+
+.form-required-note {
+  width: 100%;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin: -8px 0 16px;
 }
 
 .form-group input,

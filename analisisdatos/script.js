@@ -37,12 +37,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorMessage = document.getElementById("form-error");
   const btnSubmit = document.getElementById("btn-submit");
 
-  // TODO: Pegar acá la URL del Webhook de Make/Zapier
-  const WEBHOOK_URL = "https://hook.us1.make.com/REEMPLAZAR_CON_TU_WEBHOOK";
+  const WEBHOOK_URL = "https://hook.eu2.make.com/otuh1ufqhlhll5yo5bzbw343gt4r2wgn";
+  const MENSAJE_ERROR_ENVIO = "Ocurrió un error al enviar tu consulta. Por favor, intentá nuevamente.";
+
+  const camposRequeridos = [
+    { id: "nombre", label: "Nombre" },
+    { id: "apellido", label: "Apellido" },
+    { id: "email", label: "Email" },
+    { id: "telefono", label: "Teléfono / WhatsApp" },
+    { id: "tipo-seguro", label: "Tipo de seguro" },
+  ];
+
+  function validarFormulario() {
+    for (const campo of camposRequeridos) {
+      const elemento = document.getElementById(campo.id);
+      if (!elemento.value.trim()) {
+        elemento.focus();
+        return `Por favor, completá el campo "${campo.label}".`;
+      }
+    }
+
+    const emailField = document.getElementById("email");
+    if (!emailField.checkValidity()) {
+      emailField.focus();
+      return "Por favor, ingresá un email válido.";
+    }
+
+    return null;
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorMessage.classList.add("hidden");
+
+    const mensajeValidacion = validarFormulario();
+    if (mensajeValidacion) {
+      errorMessage.textContent = mensajeValidacion;
+      errorMessage.classList.remove("hidden");
+      return;
+    }
 
     const datos = {
       nombre: document.getElementById("nombre").value.trim(),
@@ -68,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.classList.add("hidden");
       successMessage.classList.remove("hidden");
     } catch (error) {
+      errorMessage.textContent = MENSAJE_ERROR_ENVIO;
       errorMessage.classList.remove("hidden");
       btnSubmit.disabled = false;
       btnSubmit.textContent = "Enviar consulta";
