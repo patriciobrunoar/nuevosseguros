@@ -70,18 +70,18 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.logo-mask {
+.logo {
   width: 230px;
-  height: 22px;
-  background-color: var(--color-white);
-  -webkit-mask-image: url("assets/img/logoNuevosSeguros.svg");
-  mask-image: url("assets/img/logoNuevosSeguros.svg");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  mask-position: center;
+}
+
+.logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.logo svg path {
+  fill: var(--color-white);
 }
 
 .header-tagline {
@@ -107,6 +107,43 @@ h1, h2, h3 {
 
 .block:last-of-type {
   margin-bottom: 0;
+}
+
+.block-muted {
+  background-color: rgba(5, 31, 61, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.block-muted h2 {
+  font-size: 1.05rem;
+  color: var(--color-white);
+}
+
+.block-muted p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.block-muted .bullet-item {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.block-muted .bullet-item .check-icon {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.block-muted .chip {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+}
+
+.block-muted .trust-badge {
+  color: rgba(255, 255, 255, 0.7);
+  border-top-color: rgba(255, 255, 255, 0.2);
 }
 
 .eyebrow {
@@ -572,6 +609,48 @@ form {
   width: 100%;
 }
 
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.social-link:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-phone {
+  display: inline-block;
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.footer-phone:hover {
+  text-decoration: underline;
+}
+
 .footer-hashtags {
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.82rem;
@@ -601,9 +680,8 @@ form {
     font-size: 1.5rem;
   }
 
-  .logo-mask {
+  .logo {
     width: 280px;
-    height: 27px;
   }
 
   .icon-grid {
