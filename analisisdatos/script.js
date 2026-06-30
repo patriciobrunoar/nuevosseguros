@@ -3,35 +3,28 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const stepSelect = document.getElementById("step-select");
-  const panelA = document.getElementById("panel-a");
   const panelB = document.getElementById("panel-b");
 
-  const btnOpcionA = document.getElementById("btn-opcion-a");
   const btnOpcionB = document.getElementById("btn-opcion-b");
-  const backA = document.getElementById("back-a");
   const backB = document.getElementById("back-b");
 
   function showPanel(panel) {
     stepSelect.classList.add("hidden");
-    panelA.classList.add("hidden");
     panelB.classList.add("hidden");
     panel.classList.remove("hidden");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function showSelector() {
-    panelA.classList.add("hidden");
     panelB.classList.add("hidden");
     stepSelect.classList.remove("hidden");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  btnOpcionA.addEventListener("click", () => showPanel(panelA));
   btnOpcionB.addEventListener("click", () => showPanel(panelB));
-  backA.addEventListener("click", showSelector);
   backB.addEventListener("click", showSelector);
 
-  // Formulario de contacto (Opción B)
+  // Formulario de contacto (Consumidor Final)
   const form = document.getElementById("form-contacto");
   const successMessage = document.getElementById("success-message");
   const errorMessage = document.getElementById("form-error");
